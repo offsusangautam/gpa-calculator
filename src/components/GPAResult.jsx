@@ -33,6 +33,7 @@ const GPAResult = ({ gpa }) => {
       <p className="mt-2 text-lg font-medium">{message}</p>
     </div>
   );
+  
 };
 
 export default GPAResult;

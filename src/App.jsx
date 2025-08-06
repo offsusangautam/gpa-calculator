@@ -3,7 +3,7 @@ import SubjectInput from './components/SubjectInput';
 import GPAResult from './components/GPAResult';
 import { calculateGPA } from './utils/gpaUtils';
 
-// Updated subject data — credit=3, theory=0.75, practical=0.25
+// Subject data
 const subjectData = {
   '10': [
     { name: 'English', credit: 3, theoryWeight: 0.75, practicalWeight: 0.25 },
@@ -51,21 +51,22 @@ const subjectData = {
 
 // Landing Page Component
 const LandingPage = ({ onStart }) => (
-  <section className="relative bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-700 text-white min-h-screen flex flex-col justify-center items-center px-6 md:px-20 text-center">
-    <div className="absolute top-10 left-10 w-40 h-40 bg-purple-400 rounded-full opacity-20 animate-pulse"></div>
-    <div className="absolute bottom-20 right-10 w-60 h-60 bg-indigo-400 rounded-full opacity-15 animate-pulse"></div>
+  <section className="relative bg-gradient-to-br from-blue-700 via-indigo-800 to-purple-800 text-white min-h-screen flex flex-col justify-center items-center px-6 md:px-20 text-center">
+    <div className="absolute top-10 left-10 w-44 h-44 bg-purple-500 rounded-full opacity-20 animate-pulse"></div>
+    <div className="absolute bottom-20 right-10 w-72 h-72 bg-indigo-500 rounded-full opacity-15 animate-pulse"></div>
 
-    <h1 className="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow-lg">
+    <h1 className="text-6xl font-extrabold mb-8 drop-shadow-lg">
       NEB GPA Calculator 2082
     </h1>
 
-    <p className="max-w-3xl text-lg md:text-xl mb-10 drop-shadow-md">
-      Easily calculate your GPA for Class 10, 11, and 12 according to the latest NEB grading system. Enter your grades and get instant results with theory and practical weightage taken into account.
+    <p className="max-w-3xl text-xl mb-12 drop-shadow-md leading-relaxed">
+      Easily calculate your GPA for Class 10, 11, and 12 according to the latest NEB grading system.
+      Enter your grades and get instant results with theory and practical weightage taken into account.
     </p>
 
     <button
       onClick={onStart}
-      className="bg-white text-blue-700 font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 transform transition duration-300"
+      className="bg-white text-blue-800 font-bold px-10 py-4 rounded-full shadow-lg hover:scale-110 transform transition duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300"
       aria-label="Start GPA Calculator"
     >
       Start Calculating
@@ -76,6 +77,30 @@ const LandingPage = ({ onStart }) => (
     </footer>
   </section>
 );
+
+// LoadAdScript Component
+const LoadAdScript = ({ src, containerId }) => {
+  useEffect(() => {
+    if (!src) return;
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const script = document.createElement('script');
+    script.src = src;
+    script.type = 'text/javascript';
+    script.async = true;
+
+    container.appendChild(script);
+
+    return () => {
+      if (container.contains(script)) {
+        container.removeChild(script);
+      }
+    };
+  }, [src, containerId]);
+
+  return null;
+};
 
 function App() {
   const [showLanding, setShowLanding] = useState(true);
@@ -128,32 +153,44 @@ function App() {
     setGpa(calculatedGPA);
   };
 
+  const adScripts = [
+    "//pl27358121.profitableratecpm.com/7a/1b/d5/7a1bd577e12489adea7381055c2af279.js",
+    "//www.highperformanceformat.com/16a83966b394294dc0f273f36ca0612b/invoke.js",
+    "//www.highperformanceformat.com/f748b3f601f34198ec43c41c4f32b928/invoke.js",
+    "//www.highperformanceformat.com/b4cf96d4cd512b4a34866af0ebd867e2/invoke.js",
+    "//www.highperformanceformat.com/a81579c43e49c7c105d092fdf01d5dd7/invoke.js",
+    "//www.highperformanceformat.com/f8eb6a6e6ca8b5d4befdc237dedb9514/invoke.js",
+    '//pl27358153.profitableratecpm.com/f4/3a/d9/f43ad94a6a595b670f6f98dad3b22a94.js',
+    "//www.highperformanceformat.com/37ad96a8e470ebb65ecfb3219f8c61da/invoke.js",
+    "//pl27358156.profitableratecpm.com/272d2efadb9026c55995c3c274f8b351/invoke.js",
+  ];
+
   if (showLanding) {
     return <LandingPage onStart={() => setShowLanding(false)} />;
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-10 px-4">
-      <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-xl p-6 md:p-10">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-12 px-6 md:px-12">
+      <div className="max-w-5xl mx-auto bg-white shadow-2xl rounded-3xl p-8 md:p-12">
         <button
           onClick={() => setShowLanding(true)}
-          className="mb-6 text-blue-600 hover:underline"
+          className="mb-8 text-blue-700 hover:underline font-semibold text-lg"
         >
           ← Back to Home
         </button>
 
-        <h1 className="text-4xl font-bold mb-6 text-center text-blue-700">
-          NEB GPA Calculator 2082
+        <h1 className="text-5xl font-extrabold mb-10 text-center text-blue-700 tracking-tight">
+          NEB GPA Calculator
         </h1>
 
-        <div className="mb-6">
-          <label className="block text-lg font-medium text-gray-700 mb-2">
+        <div className="mb-8">
+          <label className="block text-xl font-medium text-gray-800 mb-3">
             Select Class & Stream:
           </label>
           <select
             value={selectedClassStream}
             onChange={handleClassStreamChange}
-            className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full border border-gray-300 p-3 rounded-lg text-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition"
           >
             <option value="">-- Choose Class & Stream --</option>
             <option value="10">Class 10 (SEE)</option>
@@ -166,11 +203,16 @@ function App() {
 
         {selectedClassStream && (
           <>
-            <SubjectInput subjects={subjects} updateSubject={updateSubject} />
-            <div className="mt-6 flex justify-center">
+            <SubjectInput
+              subjects={subjects}
+              updateSubject={updateSubject}
+              className="mb-10"
+            />
+
+            <div className="flex justify-center">
               <button
                 onClick={handleCalculate}
-                className="bg-green-500 hover:bg-green-600 text-white font-medium px-6 py-2 rounded-lg transition duration-200 shadow"
+                className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-xl mt-10 shadow-lg transition duration-300 focus:outline-none focus:ring-4 focus:ring-green-400"
               >
                 Calculate GPA
               </button>
@@ -178,7 +220,26 @@ function App() {
           </>
         )}
 
-        {gpa && <GPAResult gpa={gpa} />}
+        {gpa && (
+          <div className="mt-12">
+            <GPAResult gpa={gpa} />
+          </div>
+        )}
+
+        {/* Ads Section */}
+        <div className="mt-16 space-y-16 border-t border-gray-200 pt-12">
+  {adScripts.map((src, index) => (
+    <div
+      key={index}
+      id={`ad-container-${index}`}
+      className="w-full flex justify-center shadow-md rounded-lg overflow-hidden bg-white"
+    >
+      <LoadAdScript src={src} containerId={`ad-container-${index}`} />
+    </div>
+  ))}
+</div>
+
+      
       </div>
     </div>
   );
