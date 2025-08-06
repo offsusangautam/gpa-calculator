@@ -10,7 +10,8 @@ const subjectData = {
     { name: 'Nepali', credit: 3, theoryWeight: 0.75, practicalWeight: 0.25 },
     { name: 'Mathematics', credit: 3, theoryWeight: 0.75, practicalWeight: 0.25 },
     { name: 'Social Studies', credit: 3, theoryWeight: 0.75, practicalWeight: 0.25 },
-    { name: 'E.P.H. (Health)', credit: 3, theoryWeight: 0.75, practicalWeight: 0.25 },
+    { name: 'Science', credit: 3, theoryWeight: 0.75, practicalWeight: 0.25 },
+    { name: 'Optional Subject', credit: 3, theoryWeight: 0.75, practicalWeight: 0.25, isOptional: true },
     { name: 'Optional Subject', credit: 3, theoryWeight: 0.75, practicalWeight: 0.25, isOptional: true },
   ],
   '11-science': [
