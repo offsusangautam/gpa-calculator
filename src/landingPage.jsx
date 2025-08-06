@@ -8,7 +8,7 @@ const LandingPage = ({ onStart }) => {
       <div className="absolute bottom-20 right-10 w-60 h-60 bg-indigo-400 rounded-full opacity-15 animate-pulse"></div>
 
       <h1 className="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow-lg">
-        NEB GPA Calculator 2082
+        NEB GPA Calculator
       </h1>
 
       <p className="max-w-3xl text-lg md:text-xl mb-10 drop-shadow-md">
