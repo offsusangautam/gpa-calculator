@@ -54,10 +54,10 @@ const subjectData = {
 const LandingPage = ({ onStart }) => (
   <section className="relative bg-gradient-to-br from-blue-700 via-indigo-800 to-purple-800 text-white min-h-screen flex flex-col justify-center items-center px-6 md:px-20 text-center">
     <div className="absolute top-10 left-10 w-44 h-44 bg-purple-500 rounded-full opacity-20 animate-pulse"></div>
-    <div className="absolute bottom-20 right-10 w-72 h-72 bg-indigo-500 rounded-full opacity-15 animate-pulse"></div>
+
 
     <h1 className="text-6xl font-extrabold mb-8 drop-shadow-lg">
-      NEB GPA Calculator 2082
+      NEB GPA Calculator 
     </h1>
 
     <p className="max-w-3xl text-xl mb-12 drop-shadow-md leading-relaxed">
