@@ -72,7 +72,7 @@ const LandingPage = ({ onStart }) => (
     </button>
 
     <footer className="absolute bottom-8 text-sm opacity-50">
-      Developed by <span className="font-semibold">Your Name</span>
+      Developed by <span className="font-semibold">Susan Gautam</span>
     </footer>
   </section>
 );
